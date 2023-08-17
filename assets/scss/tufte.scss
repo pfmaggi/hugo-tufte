@@ -54,21 +54,28 @@
     font-style: normal;
 }
 
+$serif-fonts: et-book, "Noto Serif SC", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif, "Noto Emoji";
+$sans-fonts: "Gill Sans", "Gill Sans MT", Calibri, sans-serif, "Noto Emoji";
+$mono-fonts: Consolas, "Liberation Mono", Menlo, Courier, monospace, "Noto Emoji";
+
 /* Tufte CSS styles */
 html {
     font-size: 15px;
 }
 
 body {
-    width: 87.5%;
     margin-left: auto;
     margin-right: auto;
     padding-left: 12.5%;
-    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-family: $serif-fonts;
     background-color: #fffff8;
     color: #111;
     max-width: 1400px;
-    counter-reset: sidenote-counter;
+}
+
+h1, h2, h3 {
+    font-weight: 400;
+    line-height: 1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,32 +86,34 @@ body {
 }
 
 h1 {
-    font-weight: 400;
     margin-top: 4rem;
     margin-bottom: 1.5rem;
     font-size: 3.2rem;
-    line-height: 1;
+}
+
+h2, h3 {
+    font-style: italic;
+    margin-bottom: 0;
 }
 
 h2 {
-    font-style: italic;
-    font-weight: 400;
     margin-top: 2.1rem;
-    margin-bottom: 0;
     font-size: 2.2rem;
-    line-height: 1;
 }
 
 h3 {
-    font-style: italic;
-    font-weight: 400;
     font-size: 1.7rem;
     margin-top: 2rem;
-    margin-bottom: 0;
-    line-height: 1;
 }
 
-p.subtitle {
+.author, .date {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 1rem auto 1rem 0;
+  line-height: 1;
+}
+
+.subtitle {
     font-style: italic;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -131,9 +140,19 @@ section {
     padding-bottom: 1rem;
 }
 
+.page-list .content-title {
+    margin-top: 4.2rem;
+    margin-bottom: 1.4rem;
+}
+
+.page-list .content-title:first-child {
+    margin-top: 1.4rem;
+}
+
 p,
 ol,
-ul {
+ul,
+dl {
     font-size: 1.4rem;
 }
 
@@ -143,28 +162,32 @@ p {
     margin-bottom: 1.4rem;
     padding-right: 0;
     vertical-align: baseline;
+    hyphens: auto;
+    -webkit-hyphenate-limit-before: 3;
+    -webkit-hyphenate-limit-after: 4;
+    -ms-hyphenate-limit-chars: 10 3 4;
+    hyphenate-limit-chars: 10 3 4;
 }
 
 /* Chapter Epigraphs */
-div.epigraph {
-    margin: 5em 0;
+.epigraph {
+    margin: 3em 0;
 }
 
-div.epigraph > blockquote {
+.epigraph > blockquote {
     margin-top: 3em;
     margin-bottom: 3em;
 }
 
-div.epigraph > blockquote,
-div.epigraph > blockquote > p {
+.epigraph > blockquote {
     font-style: italic;
 }
 
-div.epigraph > blockquote > footer {
+.epigraph > blockquote > footer {
     font-style: normal;
 }
 
-div.epigraph > blockquote > footer > cite {
+.epigraph > blockquote > footer > cite {
     font-style: italic;
 }
 
@@ -181,11 +204,12 @@ blockquote p {
 blockquote footer {
     width: 50%;
     font-size: 1.1rem;
-    text-align: right;
+    text-align: right !important;
 }
 
 ol,
-ul {
+ul,
+dl {
     width: 45%;
     -webkit-padding-start: 5%;
     -webkit-padding-end: 5%;
@@ -195,8 +219,13 @@ li  ul {
     width: 100%;
 }
 
-li {
+li,
+dt, dd {
     padding: 0.5rem 0;
+}
+
+dt {
+    font-weight: 700;
 }
 
 figure {
@@ -234,47 +263,6 @@ a:visited {
     color: inherit;
 }
 
-a:link {
-    text-decoration: none;
-    background: -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#fffff8, #fffff8),
-        -webkit-linear-gradient(#333, #333);
-    background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(#333, #333);
-    -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-    -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-    background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-    background-repeat: no-repeat, no-repeat, repeat-x;
-    text-shadow: 0.03em 0 #fffff8, -0.03em 0 #fffff8, 0 0.03em #fffff8, 0 -0.03em #fffff8, 0.06em 0 #fffff8,
-        -0.06em 0 #fffff8, 0.09em 0 #fffff8, -0.09em 0 #fffff8, 0.12em 0 #fffff8, -0.12em 0 #fffff8, 0.15em 0 #fffff8,
-        -0.15em 0 #fffff8;
-    background-position: 0% 93%, 100% 93%, 0% 93%;
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    a:link {
-        background-position-y: 87%, 87%, 87%;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    a:link, .tufte-underline, .hover-tufte-underline:hover {
-        text-shadow: 0.03em 0 #151515, -0.03em 0 #151515, 0 0.03em #151515, 0 -0.03em #151515, 0.06em 0 #151515, -0.06em 0 #151515, 0.09em 0 #151515, -0.09em 0 #151515, 0.12em 0 #151515, -0.12em 0 #151515, 0.15em 0 #151515, -0.15em 0 #151515;
-    }
-}
-
-a:link::selection {
-    text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe,
-        -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe,
-        -0.15em 0 #b4d5fe;
-    background: #b4d5fe;
-}
-
-a:link::-moz-selection {
-    text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe,
-        -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe,
-        -0.15em 0 #b4d5fe;
-    background: #b4d5fe;
-}
-
 /* Sidenotes, margin notes, figures, captions */
 img {
     max-width: 100%;
@@ -305,28 +293,26 @@ img {
     line-height: 1.6;
 }
 
+.marginnote-ind,
 .sidenote-number {
-    counter-increment: sidenote-counter;
-}
-
-.sidenote-number:after,
-.sidenote:before {
-    content: counter(sidenote-counter) " ";
-    font-family: et-book-roman-old-style;
+    // font-family: et-book-roman-old-style, "Noto Emoji";
     position: relative;
     vertical-align: baseline;
+    user-select: none;
 }
 
-.sidenote-number:after {
-    content: counter(sidenote-counter);
+// note indicator
+label.marginnote-ind,
+label.sidenote-number {
     font-size: 1rem;
     top: -0.5rem;
     left: 0.1rem;
 }
 
-.sidenote:before {
-    content: counter(sidenote-counter) " ";
-    top: -0.5rem;
+// inside sidenote
+span.marginnote-ind,
+span.sidenote-number {
+    font-size: 1.1rem;
 }
 
 p,
@@ -345,18 +331,19 @@ table.fullwidth {
 
 div.table-wrapper {
     overflow-x: scroll;
-    font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
+    font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif, "Noto Emoji";
 }
 
 @media screen and (max-width: 760px) {
+    h2,
+    h3,
     p,
     footer {
         width: 90%;
     }
-    pre.code {
-        width: 87.5%;
-    }
-    ul {
+    ul,
+    ol,
+    dl {
         width: 85%;
     }
     figure {
@@ -374,14 +361,16 @@ div.table-wrapper {
 }
 
 .sans {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-family: $sans-fonts;
     letter-spacing: 0.03em;
 }
 
-.code {
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+code,
+.code,
+kbd {
+    font-family: $mono-fonts;
     font-size: 1.125rem;
-    line-height: 1.6;
+    line-height: 1.42;
 }
 
 h1 .code,
@@ -396,6 +385,7 @@ h3 .code {
 }
 
 pre.code {
+    font-size: 0.9rem;
     width: 52.5%;
     padding-left: 2.5%;
     overflow-x: scroll;
@@ -406,25 +396,62 @@ pre.code {
     clear: both;
 }
 
-span.newthought {
+.newthought {
     font-variant: small-caps;
     font-size: 1.2em;
 }
 
+.margin-toggle {
+    cursor: pointer;
+}
+
+// accessibility feature: make label focus-able
 input.margin-toggle {
-    display: none;
+    position: absolute;
+    outline: none;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin-left: 5px;
+    margin-top: 5px;
+    z-index: -100;
+}
+
+label:has(+ input.margin-toggle:focus) {
+  outline: medium auto currentColor;
+  outline: medium auto invert;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -3px;
 }
 
 label.sidenote-number {
     display: inline;
 }
 
-label.margin-toggle:not(.sidenote-number) {
+label.marginnote-ind {
     display: none;
 }
 
+.video-container {
+    width: 100%;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+}
+
+.video {
+    width: 55%;
+}
+
+.video--16x9 {
+    aspect-ratio: 16/9;
+}
+
+.video--4x3 {
+    aspect-ratio: 4/3;
+}
+
 @media (max-width: 760px) {
-    label.margin-toggle:not(.sidenote-number) {
+    label.marginnote-ind {
         display: inline;
     }
     .sidenote,
@@ -441,9 +468,6 @@ label.margin-toggle:not(.sidenote-number) {
         margin: 1rem 2.5%;
         vertical-align: baseline;
         position: relative;
-    }
-    label {
-        cursor: pointer;
     }
     pre.code {
         width: 90%;
@@ -471,5 +495,8 @@ label.margin-toggle:not(.sidenote-number) {
     }
     img {
         width: 100%;
+    }
+    .video {
+        width: 90%;
     }
 }
