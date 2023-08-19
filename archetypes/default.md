@@ -1,7 +1,7 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 subtitle: Fancy Subtitle
-author: Totally famous person
+author: Pietro F. Maggi
 date: "{{ .Date }}"
 meta: true
 math: false

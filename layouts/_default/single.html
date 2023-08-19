@@ -10,7 +10,15 @@
   {{ partial "content.header.html" . }}
   {{ partial "toc.html" . }}
   <section>{{ .Content }}</section>
+
+<div style="text-align: center;">
+  <nav class="menu"><div style="width: 500px; margin: 0 auto;">
+    <ul>
+  	<li><a href="#">Top&nbsp<i class="fas fa-level-up-alt fa-rg"></i></a></li>
+    </ul>
+  </div></nav>
+  </div>
+
   <section>{{ partial "footer.html" . }}</section>
-  <section>{{ partial "nav.html" . }}</section>
 </article>
 {{ end }}
