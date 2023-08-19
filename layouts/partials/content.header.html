@@ -8,15 +8,20 @@
 
 {{- if and (.IsPage) (.Params.meta) -}}
 <span class="content-meta">
-  {{- if .Params.author -}}
+
+  {{- range .Params.categories -}}
+  <a href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ . }}</a>&nbsp;
+  {{- end -}}
+
+  {{- if .Params.showauthor -}}
   <p class="author">{{ .Params.author }}</p>
   {{- end -}}
 
   {{- if not .Params.hidedate -}}
-  <p class="date">{{ .Date.Format "2006-01-02" }}</p>
+  <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
   {{- end -}}
 
-  {{- if not .Params.hidereadtime -}}
+  {{- if not .Site.Params.hidereadtime -}}
   <span>{{ .ReadingTime }} min read&nbsp;</span>
   {{- end -}}
 

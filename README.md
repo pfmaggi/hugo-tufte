@@ -11,7 +11,9 @@ attempts to be a faithful implementation of the
 
 - The original repo: [shawnohare/hugo-tufte](https://github.com/shawnohare/hugo-tufte)
 - Second repo: [slashformotion/hugo-tufte](https://github.com/slashformotion/hugo-tufte)
-- This ([loikein/hugo-tufte](https://github.com/loikein/hugo-tufte)) is now the _de facto_ third repo although my original intension was only to make a few tweaks.
+- third repo: [fangyi-zhou/hugo-tufte](https://github.com/fangyi-zhou/hugo-tufte)
+- official repo: [loikein/hugo-tufte](https://github.com/loikein/hugo-tufte) is now the _de facto_ latest repo although the author's original intention was only to make a few tweaks.
+- this is my own personal spin on top of all the other changes. I wanted a few differences and I didn't like a few of the latest addition. So I decided to keep it simple and update my own fork. [pfmaggi/hugo-tufte.git](https://github.com:pfmaggi/hugo-tufte.git)
 
 ## Quickstart
 
