@@ -9,8 +9,8 @@
 {{- if and (.IsPage) (.Params.meta) -}}
 <span class="content-meta">
 
-  {{- range .Params.categories -}}
-  <a href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ . }}</a>&nbsp;
+  {{- range .Params.tags -}}
+  <a href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>&nbsp;
   {{- end -}}
 
   {{- if .Params.showauthor -}}
@@ -23,10 +23,6 @@
 
   {{- if not .Site.Params.hidereadtime -}}
   <span>{{ .ReadingTime }} min read&nbsp;</span>
-  {{- end -}}
-
-  {{- range .Params.tags -}}
-  <a href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>&nbsp;
   {{- end -}}
 </span>
 {{- end -}}
